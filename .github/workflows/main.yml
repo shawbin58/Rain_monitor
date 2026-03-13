@@ -1,0 +1,28 @@
+name: Update Rain Data
+on:
+  schedule:
+    - cron: '*/10 * * * *' # 每 10 分鐘執行一次
+  workflow_dispatch: # 允許手動執行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install requests pandas
+      - name: Run script
+        env:
+          CWA_API_KEY: ${{ secrets.CWA_API_KEY }} # 這裡放你的金鑰
+        run: python your_script_name.py
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add index.html
+          git commit -m "Update rain data" || exit 0
+          git push
