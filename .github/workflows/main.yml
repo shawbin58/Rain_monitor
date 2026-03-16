@@ -18,7 +18,7 @@ jobs:
       - name: Run script
         env:
           CWA_API_KEY: ${{ secrets.CWA_API_KEY }} # 這裡放你的金鑰
-        run: python Rain_auto1_html.py
+        run: python Rain_auto2_html.py
       - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
