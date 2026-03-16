@@ -8,7 +8,7 @@ Created on Thu Mar 12 14:53:16 2026
 import requests
 import pandas as pd
 #import schedule
-import time
+#import time
 import urllib3
 import os
 from datetime import datetime, timedelta # 確保最上面有 import timedelta
@@ -26,9 +26,10 @@ INTERVAL_MINUTES = 6
 TARGET_COUNTIES = ["苗栗縣", "臺中市", "南投縣", "彰化縣"]
 
 def fetch_and_save_to_html():
-    #current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    current_time = (datetime.now() + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
-    refresh_seconds = INTERVAL_MINUTES * 60 
+    # 修正為台灣時間 (UTC+8)
+    tw_time = datetime.now() + timedelta(hours=8)
+    current_time = tw_time.strftime("%Y-%m-%d %H:%M:%S")
+    refresh_seconds = INTERVAL_MINUTES * 60
     
     url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0002-001?Authorization={API_KEY}"
     
@@ -138,7 +139,8 @@ def fetch_and_save_to_html():
 
 # 排程與執行
 #schedule.every(INTERVAL_MINUTES).minutes.do(fetch_and_save_to_html)
-fetch_and_save_to_html()
+if __name__ == "__main__":
+    fetch_and_save_to_html()
 
 #while True:
 #    schedule.run_pending()
