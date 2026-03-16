@@ -7,7 +7,7 @@ Created on Thu Mar 12 14:53:16 2026
 
 import requests
 import pandas as pd
-import schedule
+#import schedule
 import time
 import urllib3
 import os
@@ -136,9 +136,9 @@ def fetch_and_save_to_html():
         print(f"發生錯誤: {e}")
 
 # 排程與執行
-schedule.every(INTERVAL_MINUTES).minutes.do(fetch_and_save_to_html)
+#schedule.every(INTERVAL_MINUTES).minutes.do(fetch_and_save_to_html)
 fetch_and_save_to_html()
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+#while True:
+#    schedule.run_pending()
+#    time.sleep(1)
