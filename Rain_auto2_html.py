@@ -11,7 +11,7 @@ import pandas as pd
 import time
 import urllib3
 import os
-from datetime import datetime
+from datetime import datetime, timedelta # 確保最上面有 import timedelta
 
 # 關閉 SSL 警告
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -26,7 +26,8 @@ INTERVAL_MINUTES = 10
 TARGET_COUNTIES = ["苗栗縣", "臺中市", "南投縣", "彰化縣"]
 
 def fetch_and_save_to_html():
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    #current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    current_time = (datetime.now() + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
     refresh_seconds = INTERVAL_MINUTES * 60 
     
     url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0002-001?Authorization={API_KEY}"
