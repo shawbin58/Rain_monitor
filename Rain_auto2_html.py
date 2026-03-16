@@ -21,7 +21,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 API_KEY = os.getenv("CWA_API_KEY", "你的備用金鑰")
 TARGET_FILE = "index.html" # 確保檔名是 index.html，GitHub Pages 才能讀取
 #API_KEY = "CWA-D248BB38-82C9-47CB-865F-A5ADEFF3D7B3"
-INTERVAL_MINUTES = 6         
+INTERVAL_MINUTES = 10         
 #TARGET_FILE = "Rain_auto.html"
 TARGET_COUNTIES = ["苗栗縣", "臺中市", "南投縣", "彰化縣"]
 
